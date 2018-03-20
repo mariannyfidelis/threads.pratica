@@ -6,11 +6,11 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ClienteTarefas {
+	
+	public static void main(String[] args)  throws Exception{
 
-	public static void main(String[] args) throws Exception {
-
-		Socket socket = new Socket("localhost", 12345);
-
+		Socket socket =new Socket("localhost", 12345);
+		
 		System.out.println("Conexão Estabelecida");
 
 		Thread threadEnviaComando = new Thread(new Runnable() {
@@ -79,7 +79,5 @@ public class ClienteTarefas {
 		System.out.println("Fechando o socket do cliente");
 
 		socket.close();
-
 	}
-
 }

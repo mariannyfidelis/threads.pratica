@@ -15,9 +15,10 @@ public class ServidorTarefas {
 	private AtomicBoolean estaRodando;
 
 	public ServidorTarefas() throws IOException {
+		
 		System.out.println("---- Iniciando Servidor ----");
 		this.servidor = new ServerSocket(12345);
-		this.threadPool = Executors.newCachedThreadPool();
+		this.threadPool = Executors.newCachedThreadPool(new FabricaDeThreads());
 		this.estaRodando = new AtomicBoolean(true);
 	}
 

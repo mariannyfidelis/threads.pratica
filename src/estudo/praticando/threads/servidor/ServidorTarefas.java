@@ -27,15 +27,13 @@ public class ServidorTarefas {
 
 			try {
 				Socket socket = this.servidor.accept();
-				System.out.println("Aceitando novo cliente na porta "
-						+ socket.getPort());
+				System.out.println("Aceitando novo cliente na porta " + socket.getPort());
 
-				DistribuirTarefas distribuirTarefas = new DistribuirTarefas(
-						socket, this);
+				DistribuirTarefas distribuirTarefas = new DistribuirTarefas(threadPool, socket, this);
 
 				this.threadPool.execute(distribuirTarefas);
 			} catch (SocketException e) {
-				System.out.println("SocketException, está rodando? " + this.estaRodando);
+				System.out.println("SocketException, está rodando? " + this.estaRodando.get());
 			}
 		}
 	}
